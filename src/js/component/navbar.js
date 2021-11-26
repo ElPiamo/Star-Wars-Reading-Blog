@@ -11,33 +11,31 @@ export const Navbar = () => {
 				<img src={StarWarsLogo} className="navbar-brand mb-0 h1" />
 			</Link>
 			<div className="ml-auto">
-				<Link to="/demo">
-					<div className="dropdown">
-						<button
-							className=" fs-3 btn btn-success dropdown-toggle"
-							type="button"
-							id="dropdownMenuButton1"
-							data-bs-toggle="dropdown"
-							aria-expanded="false">
-							Favorites {` (${store.favorites.length})`}
-						</button>
-						<ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-							{store.favorites.map(favorite => {
-								return (
-									<li className="d-flex justify-content-between" key={favorite.name}>
-										{favorite.name}
-										<i
-											className="far fa-trash-alt"
-											onClick={() => {
-												actions.deleteTask(favorite.name);
-											}}
-										/>
-									</li>
-								);
-							})}
-						</ul>
-					</div>
-				</Link>
+				<div className="dropdown">
+					<button
+						className=" fs-3 btn btn-success dropdown-toggle"
+						type="button"
+						id="dropdownMenuButton1"
+						data-bs-toggle="dropdown"
+						aria-expanded="false">
+						Favorites {` (${store.favorites.length})`}
+					</button>
+					<ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+						{store.favorites.map(favorite => {
+							return (
+								<li className="d-flex justify-content-between" key={favorite.name}>
+									{favorite.name}
+									<i
+										className="far fa-trash-alt"
+										onClick={() => {
+											actions.deleteFavItem(favorite.name);
+										}}
+									/>
+								</li>
+							);
+						})}
+					</ul>
+				</div>
 			</div>
 		</nav>
 	);

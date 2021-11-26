@@ -44,18 +44,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ ...store, favorites: [...store.favorites, found] });
 					}
 				}
-			} //,
+			},
 
-			// deleteFavItem: nametodelete => {
-			// 	const store = getStore();
-			// 	const newFavs = store.favorites.filter(item => {
-			// 		return nametodelete !== item.name;
-			// 	});
-			// 	setStore({
-			// 		...store,
-			// 		favorites: newFavs
-			// 	});
-			// }
+			deleteFavItem: nametodelete => {
+				const store = getStore();
+				const newFavs = store.favorites.filter(item => {
+					return nametodelete != item.name;
+				});
+				setStore({
+					...store,
+					favorites: newFavs
+				});
+			}
 		} // cierre de actions
 	};
 };
