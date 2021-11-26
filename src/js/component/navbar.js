@@ -25,6 +25,11 @@ export const Navbar = () => {
 							return (
 								<li className="d-flex justify-content-between" key={favorite.name}>
 									{favorite.name}
+									<Link
+										to={`/${favorite.name}/${favorite.uid}`}
+										seccion="button"
+										className="btn btn-outline-primary"
+									/>
 									<i
 										className="far fa-trash-alt"
 										onClick={() => {

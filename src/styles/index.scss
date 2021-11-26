@@ -1,3 +1,14 @@
-/* 
-    General Styles
-*/
+.row-card{
+    display: flex;
+    overflow-x: scroll;
+    margin-bottom: 50px;
+}
+
+.card{
+    min-width: 400px;
+    max-width: 400px;
+    margin: 15px;
+}
+.corazon:hover{
+    text-shadow: 0 0 6px #FF0000, 0 0 10px #0000FF;
+}

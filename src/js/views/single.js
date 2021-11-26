@@ -1,26 +1,36 @@
 import React, { useState, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import SingleCard from "../component/SingleCard.js";
 
-export const Single = props => {
+const Single = () => {
 	const { store, actions } = useContext(Context);
-	const params = useParams();
+	const { id, seccion } = useParams();
+	const [single, setSingle] = useState({});
+
+	useEffect(() => {
+		if (id) {
+			for (let arr in store) {
+				if (arr === seccion) {
+					let newItem = store[seccion].find(item => {
+						return item.uid == id;
+					});
+					setSingle(newItem);
+				}
+			}
+		}
+	}, []);
+
 	return (
-		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element: {store.item[params.theid].name}</h1>
-
-			<hr className="my-4" />
-
-			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
+		<div className="container">
+			<div className="uniqueElement">
+				<h1>{`some text about ${single.name}`}</h1>
+				<Link to="/" type="button" className="btn btn-outline-info">
 					Back home
-				</span>
-			</Link>
+				</Link>
+			</div>
 		</div>
 	);
 };
 
-Single.propTypes = {
-	item: PropTypes.object
-};
+export default Single;
