@@ -6,7 +6,7 @@ import { Context } from "../store/appContext.js";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar fixed-top navbar-light bg-light mb-3">
 			<Link to="/">
 				<img src={StarWarsLogo} className="navbar-brand mb-0 h1" />
 			</Link>
@@ -25,17 +25,14 @@ export const Navbar = () => {
 							return (
 								<li className="d-flex justify-content-between" key={favorite.name}>
 									{favorite.name}
-									<Link
-										to={`/${favorite.name}/${favorite.uid}`}
-										seccion="button"
-										className="btn btn-outline-primary"
-									/>
-									<i
-										className="far fa-trash-alt"
-										onClick={() => {
-											actions.deleteFavItem(favorite.name);
-										}}
-									/>
+									<div>
+										<i
+											className="far fa-trash-alt"
+											onClick={() => {
+												actions.deleteFavItem(favorite.name);
+											}}
+										/>
+									</div>
 								</li>
 							);
 						})}

@@ -5,7 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people: [],
 			planets: [],
 			vehicles: [],
-			favorites: []
+			favorites: [],
+			singleInfo: []
 		},
 		actions: {
 			getData: async endpoint => {
@@ -19,6 +20,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.log(error);
 				}
+			},
+
+			getIndInfo: async (id, seccion) => {
+				let store = getStore();
+				try {
+					let response = await fetch(`${store.URLbase}/${seccion}/${id}`);
+					let body = await response.json();
+					if (response.ok) {
+						setStore({
+							...store,
+							singleInfo: body.result.properties
+						});
+					}
+				} catch (error) {}
 			},
 
 			addFavItem: (anything, seccion) => {

@@ -8,7 +8,7 @@ export const Home = props => {
 
 	return (
 		<div className="container">
-			<div className="row">
+			<div className="row first-row">
 				<div className="col-12">
 					<p className="fs-1 text-blue d-flex justify-content-center">People</p>
 				</div>
